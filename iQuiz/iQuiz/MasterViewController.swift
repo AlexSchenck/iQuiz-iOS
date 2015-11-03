@@ -9,9 +9,41 @@
 import UIKit
 
 class MasterViewController: UITableViewController {
-
+    
+    class Quiz {
+        var title : String
+        var description : String
+        var imagePath : String
+        
+        init (title : String, description : String, imagePath : String) {
+            self.title = title
+            self.description = description
+            self.imagePath = imagePath
+        }
+    }
+    
+    class QuizData {
+        var data : [Quiz]
+        
+        init() {
+            data = []
+            
+            let q1 = Quiz(title: "Math", description: "Like numbers? You won't after this.", imagePath: "math.jpg")
+            let q2 = Quiz(title: "Marvel Super Heroes", description: "Test your quiz might against these heroes!", imagePath: "marvel.jpeg")
+            let q3 = Quiz(title: "Science", description: "All the chem jokes Argon.", imagePath: "science.jpg")
+            
+            data.append(q1)
+            data.append(q2)
+            data.append(q3)
+        }
+        
+        func getQuizzes() -> [Quiz] {
+            return data
+        }
+    }
+    
     var detailViewController: DetailViewController? = nil
-    var objects = [AnyObject]()
+    var objects : [Quiz] = QuizData().getQuizzes()
 
     @IBOutlet weak var SettingsBarButton: UIBarButtonItem!
 
@@ -27,12 +59,20 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        
         //self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
-        //let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        //self.navigationItem.rightBarButtonItem = addButton
+        /*
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+        self.navigationItem.rightBarButtonItem = addButton
+        */
         
         self.navigationItem.leftBarButtonItem = SettingsBarButton
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+
+        tableView.tableFooterView = UIView()
         
         if let split = self.splitViewController {
             let controllers = split.viewControllers
@@ -56,20 +96,22 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    /*
     func insertNewObject(sender: AnyObject) {
         objects.insert(NSDate(), atIndex: 0)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
-
+    */
+    
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as! NSDate
+                let object = objects[indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                controller.detailItem = object.title
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -87,16 +129,19 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
-
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let q = self.objects[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("MasterCell", forIndexPath: indexPath) as! UITableViewCell
+        
+        cell.textLabel?.text = q.title
+        cell.detailTextLabel?.text = q.description
+        cell.imageView?.image = UIImage(named: q.imagePath)
+        
         return cell
     }
 
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return false
     }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -110,4 +155,3 @@ class MasterViewController: UITableViewController {
 
 
 }
-
