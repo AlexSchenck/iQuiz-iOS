@@ -13,6 +13,7 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var objects = [AnyObject]()
 
+    @IBOutlet weak var SettingsBarButton: UIBarButtonItem!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,17 +25,32 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        self.navigationItem.rightBarButtonItem = addButton
+        //self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        
+        //let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
+        //self.navigationItem.rightBarButtonItem = addButton
+        
+        self.navigationItem.leftBarButtonItem = SettingsBarButton
+        
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
     }
 
+    @IBAction func gotoSettings(sender: AnyObject) {
+        let alertController = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "Sounds good", style: .Default) { (action) in
+        }
+        
+        alertController.addAction(okAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
