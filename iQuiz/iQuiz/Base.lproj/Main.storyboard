@@ -43,6 +43,10 @@
                                     <constraint firstAttribute="width" constant="600" id="JZy-4q-1Tx"/>
                                     <constraint firstAttribute="height" constant="162" id="Wm1-OB-QEj"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="JEX-9P-axG" id="vWi-mW-0lu"/>
+                                    <outlet property="delegate" destination="JEX-9P-axG" id="NW7-1m-qhI"/>
+                                </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRX-99-olX">
                                 <rect key="frame" x="248" y="520" width="104" height="30"/>
@@ -165,17 +169,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="went here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdc-MH-TOw">
-                                <rect key="frame" x="279" y="289" width="76" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How they did" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdc-MH-TOw">
+                                <rect key="frame" x="249" y="289" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xa-wW-Ddn">
+                                <rect key="frame" x="282" y="520" width="37" height="30"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="RMx-3f-FxP" kind="show" id="Qr6-U6-BBN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="kdc-MH-TOw" secondAttribute="centerX" id="49I-ZW-xUg"/>
+                            <constraint firstItem="f67-ye-5ou" firstAttribute="top" secondItem="6xa-wW-Ddn" secondAttribute="bottom" constant="50" id="5Fg-TS-yHa"/>
+                            <constraint firstAttribute="centerY" secondItem="kdc-MH-TOw" secondAttribute="centerY" constant="0.5" id="ije-cn-oo6"/>
+                            <constraint firstAttribute="centerX" secondItem="6xa-wW-Ddn" secondAttribute="centerX" id="xca-9G-BKy"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="FinishView" destination="UXn-Rk-pG2" id="XnI-Ae-0DM"/>
+                        <outlet property="ResultsLabel" destination="kdc-MH-TOw" id="ysS-Wr-jMU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UID-hZ-x8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,6 +291,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="937-yz-YfA"/>
+        <segue reference="Qr6-U6-BBN"/>
         <segue reference="Kne-mh-B0K"/>
     </inferredMetricsTieBreakers>
 </document>
