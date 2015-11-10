@@ -14,9 +14,9 @@
 		941EFD5A1BE8604400A71FD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 941EFD591BE8604400A71FD2 /* Images.xcassets */; };
 		941EFD5D1BE8604400A71FD2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941EFD5B1BE8604400A71FD2 /* LaunchScreen.xib */; };
 		941EFD691BE8604400A71FD2 /* iQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941EFD681BE8604400A71FD2 /* iQuizTests.swift */; };
-		941EFD731BE8954700A71FD2 /* math.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 941EFD721BE8954700A71FD2 /* math.jpg */; };
-		941EFD751BE8958700A71FD2 /* marvel.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 941EFD741BE8958700A71FD2 /* marvel.jpeg */; };
-		941EFD771BE895CD00A71FD2 /* science.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 941EFD761BE895CD00A71FD2 /* science.jpg */; };
+		9466628F1BF1AAD400A3AF4F /* marvel.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9466628C1BF1AAD400A3AF4F /* marvel.jpeg */; };
+		946662901BF1AAD400A3AF4F /* math.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9466628D1BF1AAD400A3AF4F /* math.jpg */; };
+		946662911BF1AAD400A3AF4F /* science.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9466628E1BF1AAD400A3AF4F /* science.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +41,9 @@
 		941EFD621BE8604400A71FD2 /* iQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		941EFD671BE8604400A71FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		941EFD681BE8604400A71FD2 /* iQuizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iQuizTests.swift; sourceTree = "<group>"; };
-		941EFD721BE8954700A71FD2 /* math.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = math.jpg; path = ../../../math.jpg; sourceTree = "<group>"; };
-		941EFD741BE8958700A71FD2 /* marvel.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = marvel.jpeg; path = ../../../marvel.jpeg; sourceTree = "<group>"; };
-		941EFD761BE895CD00A71FD2 /* science.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = science.jpg; path = ../../../science.jpg; sourceTree = "<group>"; };
+		9466628C1BF1AAD400A3AF4F /* marvel.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = marvel.jpeg; path = iQuiz/marvel.jpeg; sourceTree = "<group>"; };
+		9466628D1BF1AAD400A3AF4F /* math.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = math.jpg; path = iQuiz/math.jpg; sourceTree = "<group>"; };
+		9466628E1BF1AAD400A3AF4F /* science.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = science.jpg; path = iQuiz/science.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +67,9 @@
 		941EFD421BE8604300A71FD2 = {
 			isa = PBXGroup;
 			children = (
+				9466628C1BF1AAD400A3AF4F /* marvel.jpeg */,
+				9466628D1BF1AAD400A3AF4F /* math.jpg */,
+				9466628E1BF1AAD400A3AF4F /* science.jpg */,
 				941EFD4D1BE8604300A71FD2 /* iQuiz */,
 				941EFD651BE8604400A71FD2 /* iQuizTests */,
 				941EFD4C1BE8604300A71FD2 /* Products */,
@@ -87,9 +90,6 @@
 			children = (
 				941EFD501BE8604300A71FD2 /* AppDelegate.swift */,
 				941EFD521BE8604300A71FD2 /* MasterViewController.swift */,
-				941EFD761BE895CD00A71FD2 /* science.jpg */,
-				941EFD741BE8958700A71FD2 /* marvel.jpeg */,
-				941EFD721BE8954700A71FD2 /* math.jpg */,
 				941EFD541BE8604400A71FD2 /* DetailViewController.swift */,
 				941EFD561BE8604400A71FD2 /* Main.storyboard */,
 				941EFD591BE8604400A71FD2 /* Images.xcassets */,
@@ -205,11 +205,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				941EFD581BE8604400A71FD2 /* Main.storyboard in Resources */,
-				941EFD731BE8954700A71FD2 /* math.jpg in Resources */,
+				946662901BF1AAD400A3AF4F /* math.jpg in Resources */,
 				941EFD5D1BE8604400A71FD2 /* LaunchScreen.xib in Resources */,
+				9466628F1BF1AAD400A3AF4F /* marvel.jpeg in Resources */,
+				946662911BF1AAD400A3AF4F /* science.jpg in Resources */,
 				941EFD5A1BE8604400A71FD2 /* Images.xcassets in Resources */,
-				941EFD771BE895CD00A71FD2 /* science.jpg in Resources */,
-				941EFD751BE8958700A71FD2 /* marvel.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +427,7 @@
 				941EFD6E1BE8604400A71FD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		941EFD6F1BE8604400A71FD2 /* Build configuration list for PBXNativeTarget "iQuizTests" */ = {
 			isa = XCConfigurationList;
@@ -435,6 +436,7 @@
 				941EFD711BE8604400A71FD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

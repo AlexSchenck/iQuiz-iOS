@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7DC58C3E-E99F-4F8A-9EB9-F0709A93DC75</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iQuiz</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E4AEB4274B93A11A2A9CC8C6E641CC0BA868F8C2</key>
+		<string>https://github.com/AlexSchenck/iQuiz-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iQuiz/iQuiz.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E4AEB4274B93A11A2A9CC8C6E641CC0BA868F8C2</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/AlexSchenck/iQuiz-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E4AEB4274B93A11A2A9CC8C6E641CC0BA868F8C2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E4AEB4274B93A11A2A9CC8C6E641CC0BA868F8C2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iQuiz-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
