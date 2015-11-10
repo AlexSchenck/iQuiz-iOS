@@ -15,12 +15,15 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var QuestionAnswerSubmitButton: UIButton!
     @IBOutlet weak var CorrectAnswer: UILabel!
     @IBOutlet weak var CorrectAnswerIndicator: UILabel!
+    @IBOutlet weak var ContinueButton: UIButton!
+    @IBOutlet weak var FinishButton: UIButton!
     
     @IBOutlet var QuestionView: UIView!
     @IBOutlet var AnswerView: UIView!
     @IBOutlet var FinishView: UIView!
     
-    var chosenQuiz : MasterViewController.Quiz  = MasterViewController.Quiz(title: "", description: "", imagePath: "")
+    var chosenQuiz : MasterViewController.Quiz  = MasterViewController.Quiz(title: "", description: "", imagePath: "", questions: [])
+    var questionNumber : Int = 0
     
     var detailItem: AnyObject? {
         didSet {
@@ -39,6 +42,28 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+        
+        // Find out what view loaded, load resulting info
+        if (QuestionView != nil) {
+            QuestionPrompt.text = chosenQuiz.questions[questionNumber].prompt
+            questionNumber++
+        }
+        else if (AnswerView != nil) {
+            if (questionNumber < count(chosenQuiz.questions)) {
+                FinishButton.hidden = true
+            }
+            else {
+                ContinueButton.hidden = true
+            }
+        }
+        else if (FinishView != nil) {
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let controller = segue.destinationViewController as! DetailViewController
+        controller.chosenQuiz = chosenQuiz
+        controller.questionNumber = questionNumber
     }
 
     override func didReceiveMemoryWarning() {

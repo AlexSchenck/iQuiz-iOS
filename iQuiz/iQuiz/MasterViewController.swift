@@ -67,16 +67,18 @@ class MasterViewController: UITableViewController {
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
+        //if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let chosen = objects[indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 controller.chosenQuiz = chosen
+                controller.questionNumber = 0
+                
                 //controller.detailItem = chosen.title
                 //controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 //controller.navigationItem.leftItemsSupplementBackButton = true
             }
-        }
+        //}
     }
 
     // MARK: - Table View
@@ -189,6 +191,10 @@ class MasterViewController: UITableViewController {
             let question7 = Question(prompt: "What is not an element on the periodic table?", answers: ["Tin", "Silver", "Aluminum", "Graphite"], correctAnswer: 3)
             let question8 = Question(prompt: "What is the universal solvent?", answers: ["Fire", "Air", "Water", "Earth"], correctAnswer: 2)
             let question9 = Question(prompt: "What element has fewest protons?", answers: ["Lead", "Hydrogen", "Helium", "Mercury"], correctAnswer: 1)
+            
+            q3.addQuestion(question7)
+            q3.addQuestion(question8)
+            q3.addQuestion(question9)
             data.append(q3)
         }
         

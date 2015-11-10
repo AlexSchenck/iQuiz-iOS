@@ -108,6 +108,9 @@
                                 <state key="normal" title="Continue">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="JEX-9P-axG" kind="show" id="937-yz-YfA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6H-7w-7R0">
                                 <rect key="frame" x="279" y="520" width="41" height="30"/>
@@ -140,8 +143,10 @@
                     <navigationItem key="navigationItem" id="uBq-Fg-wZ0"/>
                     <connections>
                         <outlet property="AnswerView" destination="BMk-bm-vWH" id="VxM-UJ-7gU"/>
+                        <outlet property="ContinueButton" destination="YsI-Cz-PqF" id="KQ4-yd-g38"/>
                         <outlet property="CorrectAnswer" destination="gvy-SN-Zdl" id="OiI-Tj-XyL"/>
                         <outlet property="CorrectAnswerIndicator" destination="zEG-o0-d1j" id="ubF-Z5-7Bp"/>
+                        <outlet property="FinishButton" destination="N6H-7w-7R0" id="Ky6-Ii-o73"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evr-4Z-oOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,6 +270,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="937-yz-YfA"/>
         <segue reference="Kne-mh-B0K"/>
     </inferredMetricsTieBreakers>
 </document>
