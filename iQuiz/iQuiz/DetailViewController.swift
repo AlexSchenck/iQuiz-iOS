@@ -99,20 +99,26 @@ class DetailViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Set new chosen answer if it was QuestionView
-        if (QuestionView != nil)
-        {
-            chosenAnswer = QuestionAnswerPicker.selectedRowInComponent(0)
+        if let barItem = sender as? UIBarButtonItem {
         }
+        else {
+            // Set new chosen answer if it was QuestionView
+            if (QuestionView != nil)
+            {
+                chosenAnswer = QuestionAnswerPicker.selectedRowInComponent(0)
+            }
         
-        // Go to next detailView if current view is not FinishView
-        if (FinishView == nil)
-        {
-            let controller = segue.destinationViewController as! DetailViewController
-            controller.chosenQuiz = chosenQuiz
-            controller.questionNumber = questionNumber
-            controller.chosenAnswer = chosenAnswer
-            controller.numberCorrect = numberCorrect
+            // Go to next detailView if current view is not FinishView
+            if (FinishView == nil)
+            {
+                let controller = segue.destinationViewController as! DetailViewController
+                controller.navigationItem.backBarButtonItem?.target = self.navigationController
+                controller.navigationItem.backBarButtonItem?.title = "Main Menu"
+                controller.chosenQuiz = chosenQuiz
+                controller.questionNumber = questionNumber
+                controller.chosenAnswer = chosenAnswer
+                controller.numberCorrect = numberCorrect
+            }
         }
     }
 

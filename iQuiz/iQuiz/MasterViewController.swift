@@ -76,7 +76,6 @@ class MasterViewController: UITableViewController {
                 
                 //controller.detailItem = chosen.title
                 //controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                //controller.navigationItem.leftItemsSupplementBackButton = true
             }
         //}
     }
@@ -181,7 +180,7 @@ class MasterViewController: UITableViewController {
             
             let question4 = Question(prompt: "Who is not a Marvel hero?", answers: ["Hulk", "Iron Man", "Captain Marvel", "Green Lantern"], correctAnswer: 3)
             let question5 = Question(prompt: "Who is not a part of the Avengers?", answers: ["Captain America", "Black Widow", "Batman", "Bruce Banner"], correctAnswer: 2)
-            let question6 = Question(prompt: "What is Spiderman's alter ego?", answers: ["Joey McSpider", "Peter Parker", "Bobby EightLegs", "Mickey Van Der Tarantula"], correctAnswer: 3)
+            let question6 = Question(prompt: "What is Spiderman's alter ego?", answers: ["Joey McSpider", "Peter Parker", "Bobby EightLegs", "Mickey Van Der Tarantula"], correctAnswer: 1)
             
             q2.addQuestion(question4)
             q2.addQuestion(question5)

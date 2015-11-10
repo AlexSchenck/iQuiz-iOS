@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="-630"/>
+            <point key="canvasLocation" x="1158" y="-1962"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="yUG-lL-AsK">
@@ -77,7 +77,13 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" id="mOI-FS-AaM">
+                        <barButtonItem key="leftBarButtonItem" title="Main Menu" id="06I-UQ-kMJ">
+                            <connections>
+                                <segue destination="RMx-3f-FxP" kind="show" id="hOL-wH-ocB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="QuestionAnswerPicker" destination="Pqd-7q-386" id="77J-Ge-CIi"/>
                         <outlet property="QuestionAnswerSubmitButton" destination="DRX-99-olX" id="FWe-ib-8xA"/>
@@ -87,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="129"/>
+            <point key="canvasLocation" x="-38" y="205"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="q9B-IJ-fwO">
@@ -144,7 +150,13 @@
                             <constraint firstItem="zEG-o0-d1j" firstAttribute="top" secondItem="gvy-SN-Zdl" secondAttribute="bottom" constant="50" id="xgD-Yc-zMd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="uBq-Fg-wZ0"/>
+                    <navigationItem key="navigationItem" id="uBq-Fg-wZ0">
+                        <barButtonItem key="leftBarButtonItem" title="Main Menu" id="fEA-wz-8SR">
+                            <connections>
+                                <segue destination="RMx-3f-FxP" kind="show" id="QMa-Ng-P5k"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="AnswerView" destination="BMk-bm-vWH" id="VxM-UJ-7gU"/>
                         <outlet property="ContinueButton" destination="YsI-Cz-PqF" id="KQ4-yd-g38"/>
@@ -155,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evr-4Z-oOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1528" y="129"/>
+            <point key="canvasLocation" x="1110" y="205"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="vaz-QR-czb">
@@ -193,6 +205,13 @@
                             <constraint firstAttribute="centerX" secondItem="6xa-wW-Ddn" secondAttribute="centerX" id="xca-9G-BKy"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="SeN-Od-Wu7">
+                        <barButtonItem key="leftBarButtonItem" title="Main Menu" id="J99-ph-1RN">
+                            <connections>
+                                <segue destination="RMx-3f-FxP" kind="show" id="HXa-dC-SmP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="FinishView" destination="UXn-Rk-pG2" id="XnI-Ae-0DM"/>
                         <outlet property="ResultsLabel" destination="kdc-MH-TOw" id="ysS-Wr-jMU"/>
@@ -200,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UID-hZ-x8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2328" y="129"/>
+            <point key="canvasLocation" x="2152" y="205"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -214,7 +233,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-856" y="-330"/>
+            <point key="canvasLocation" x="-38" y="-1954"/>
         </scene>
         <!--MasterView-->
         <scene sceneID="smW-Zh-WAh">
@@ -271,7 +290,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="699" y="-630"/>
+            <point key="canvasLocation" x="2243" y="-1962"/>
         </scene>
         <!--Detail-->
         <scene sceneID="r7l-gg-dq7">
@@ -286,12 +305,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-45" y="129"/>
+            <point key="canvasLocation" x="-33" y="-879"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="937-yz-YfA"/>
-        <segue reference="Qr6-U6-BBN"/>
+        <segue reference="0DA-t4-BFH"/>
         <segue reference="Kne-mh-B0K"/>
+        <segue reference="Qr6-U6-BBN"/>
     </inferredMetricsTieBreakers>
 </document>
