@@ -19,10 +19,10 @@
             </objects>
             <point key="canvasLocation" x="-38" y="-630"/>
         </scene>
-        <!--QuestionView-->
+        <!--Detail View Controller-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController title="QuestionView" id="JEX-9P-axG" customClass="DetailViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JEX-9P-axG" customClass="DetailViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
                         <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
@@ -31,6 +31,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Prompt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Of-MC-tWo">
+                                <rect key="frame" x="235" y="214" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pqd-7q-386">
+                                <rect key="frame" x="0.0" y="285" width="600" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="JZy-4q-1Tx"/>
+                                    <constraint firstAttribute="height" constant="162" id="Wm1-OB-QEj"/>
+                                </constraints>
+                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRX-99-olX">
                                 <rect key="frame" x="248" y="520" width="104" height="30"/>
                                 <state key="normal" title="Submit Answer">
@@ -40,19 +53,6 @@
                                     <segue destination="XRh-p5-mPk" kind="show" id="PgU-Po-Ht9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Prompt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Of-MC-tWo">
-                                <rect key="frame" x="235" y="170" width="131" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pqd-7q-386">
-                                <rect key="frame" x="0.0" y="241" width="600" height="162"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="JZy-4q-1Tx"/>
-                                    <constraint firstAttribute="height" constant="162" id="Wm1-OB-QEj"/>
-                                </constraints>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -78,16 +78,17 @@
                         <outlet property="QuestionAnswerPicker" destination="Pqd-7q-386" id="77J-Ge-CIi"/>
                         <outlet property="QuestionAnswerSubmitButton" destination="DRX-99-olX" id="FWe-ib-8xA"/>
                         <outlet property="QuestionPrompt" destination="5Of-MC-tWo" id="3n1-dj-5O4"/>
+                        <outlet property="QuestionView" destination="svH-Pt-448" id="lMc-Em-Wwl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="129"/>
         </scene>
-        <!--AnswerView-->
+        <!--Detail View Controller-->
         <scene sceneID="q9B-IJ-fwO">
             <objects>
-                <viewController title="AnswerView" id="XRh-p5-mPk" customClass="DetailViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XRh-p5-mPk" customClass="DetailViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HH3-3m-GDa"/>
                         <viewControllerLayoutGuide type="bottom" id="JJ8-Db-53K"/>
@@ -138,6 +139,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uBq-Fg-wZ0"/>
                     <connections>
+                        <outlet property="AnswerView" destination="BMk-bm-vWH" id="VxM-UJ-7gU"/>
                         <outlet property="CorrectAnswer" destination="gvy-SN-Zdl" id="OiI-Tj-XyL"/>
                         <outlet property="CorrectAnswerIndicator" destination="zEG-o0-d1j" id="ubF-Z5-7Bp"/>
                     </connections>
@@ -146,11 +148,10 @@
             </objects>
             <point key="canvasLocation" x="1528" y="129"/>
         </scene>
-        <!--FinishView-->
+        <!--Detail View Controller-->
         <scene sceneID="vaz-QR-czb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UID-hZ-x8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="FinishView" id="Ur9-8I-meo" customClass="DetailViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ur9-8I-meo" customClass="DetailViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bLn-V8-KkH"/>
                         <viewControllerLayoutGuide type="bottom" id="f67-ye-5ou"/>
@@ -168,7 +169,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="FinishView" destination="UXn-Rk-pG2" id="XnI-Ae-0DM"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UID-hZ-x8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2328" y="129"/>
         </scene>

@@ -16,6 +16,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var CorrectAnswer: UILabel!
     @IBOutlet weak var CorrectAnswerIndicator: UILabel!
     
+    @IBOutlet var QuestionView: UIView!
+    @IBOutlet var AnswerView: UIView!
+    @IBOutlet var FinishView: UIView!
+    
+    var chosenQuiz : MasterViewController.Quiz  = MasterViewController.Quiz(title: "", description: "", imagePath: "")
+    
     var detailItem: AnyObject? {
         didSet {
             // Update the view.

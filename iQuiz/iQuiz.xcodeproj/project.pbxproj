@@ -14,9 +14,9 @@
 		941EFD5A1BE8604400A71FD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 941EFD591BE8604400A71FD2 /* Images.xcassets */; };
 		941EFD5D1BE8604400A71FD2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941EFD5B1BE8604400A71FD2 /* LaunchScreen.xib */; };
 		941EFD691BE8604400A71FD2 /* iQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941EFD681BE8604400A71FD2 /* iQuizTests.swift */; };
-		9466628F1BF1AAD400A3AF4F /* marvel.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9466628C1BF1AAD400A3AF4F /* marvel.jpeg */; };
-		946662901BF1AAD400A3AF4F /* math.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9466628D1BF1AAD400A3AF4F /* math.jpg */; };
-		946662911BF1AAD400A3AF4F /* science.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9466628E1BF1AAD400A3AF4F /* science.jpg */; };
+		94E021331BF1C4A200E0688E /* marvel.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 94E021301BF1C4A200E0688E /* marvel.jpeg */; };
+		94E021341BF1C4A200E0688E /* math.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 94E021311BF1C4A200E0688E /* math.jpg */; };
+		94E021351BF1C4A200E0688E /* science.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 94E021321BF1C4A200E0688E /* science.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +41,9 @@
 		941EFD621BE8604400A71FD2 /* iQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		941EFD671BE8604400A71FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		941EFD681BE8604400A71FD2 /* iQuizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iQuizTests.swift; sourceTree = "<group>"; };
-		9466628C1BF1AAD400A3AF4F /* marvel.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = marvel.jpeg; path = iQuiz/marvel.jpeg; sourceTree = "<group>"; };
-		9466628D1BF1AAD400A3AF4F /* math.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = math.jpg; path = iQuiz/math.jpg; sourceTree = "<group>"; };
-		9466628E1BF1AAD400A3AF4F /* science.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = science.jpg; path = iQuiz/science.jpg; sourceTree = "<group>"; };
+		94E021301BF1C4A200E0688E /* marvel.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = marvel.jpeg; path = iQuiz/marvel.jpeg; sourceTree = "<group>"; };
+		94E021311BF1C4A200E0688E /* math.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = math.jpg; path = iQuiz/math.jpg; sourceTree = "<group>"; };
+		94E021321BF1C4A200E0688E /* science.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = science.jpg; path = iQuiz/science.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +67,9 @@
 		941EFD421BE8604300A71FD2 = {
 			isa = PBXGroup;
 			children = (
-				9466628C1BF1AAD400A3AF4F /* marvel.jpeg */,
-				9466628D1BF1AAD400A3AF4F /* math.jpg */,
-				9466628E1BF1AAD400A3AF4F /* science.jpg */,
+				94E021301BF1C4A200E0688E /* marvel.jpeg */,
+				94E021311BF1C4A200E0688E /* math.jpg */,
+				94E021321BF1C4A200E0688E /* science.jpg */,
 				941EFD4D1BE8604300A71FD2 /* iQuiz */,
 				941EFD651BE8604400A71FD2 /* iQuizTests */,
 				941EFD4C1BE8604300A71FD2 /* Products */,
@@ -205,10 +205,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				941EFD581BE8604400A71FD2 /* Main.storyboard in Resources */,
-				946662901BF1AAD400A3AF4F /* math.jpg in Resources */,
+				94E021341BF1C4A200E0688E /* math.jpg in Resources */,
 				941EFD5D1BE8604400A71FD2 /* LaunchScreen.xib in Resources */,
-				9466628F1BF1AAD400A3AF4F /* marvel.jpeg in Resources */,
-				946662911BF1AAD400A3AF4F /* science.jpg in Resources */,
+				94E021331BF1C4A200E0688E /* marvel.jpeg in Resources */,
+				94E021351BF1C4A200E0688E /* science.jpg in Resources */,
 				941EFD5A1BE8604400A71FD2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
