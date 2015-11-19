@@ -11,8 +11,10 @@ import UIKit
 class MasterViewController: UITableViewController {
     
     var detailViewController: DetailViewController? = nil
-    var objects : [Quiz] = QuizData().getQuizzes()
+    var objects : [Quiz] = QuizData().getQuizzes() // Show default
+    var quizURL : String = "http://tednewardsandbox.site44.com/questions.json" // Use default
     var data = NSMutableData()
+    let defaults = NSUserDefaults.standardUserDefaults()
 
     @IBOutlet weak var SettingsBarButton: UIBarButtonItem!
 
@@ -22,6 +24,16 @@ class MasterViewController: UITableViewController {
             self.clearsSelectionOnViewWillAppear = false
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
+        
+        // Load stored URL to get quizzes
+        if let storedURL = defaults.stringForKey("url") {
+            quizURL = storedURL
+        }
+        
+        // Load previously saved quizzes in case of no internet connection
+        if let storedObjects: AnyObject = defaults.objectForKey("quizList") {
+            objects = makeQuizzes(storedObjects as! NSMutableArray)
+        }
     }
 
     override func viewDidLoad() {
@@ -29,18 +41,14 @@ class MasterViewController: UITableViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        //self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
-        /*
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        self.navigationItem.rightBarButtonItem = addButton
-        */
-        
+        // Create settings button
         self.navigationItem.leftBarButtonItem = SettingsBarButton
         
+        // Set delegate and datasource for tableView
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
+        // Remove empty cells
         tableView.tableFooterView = UIView()
         
         if let split = self.splitViewController {
@@ -48,6 +56,7 @@ class MasterViewController: UITableViewController {
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
         
+        // Download quizzes
         startConnection()
     }
     
@@ -56,19 +65,72 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // Create settings popover
     @IBAction func gotoSettings(sender: AnyObject) {
-        let alertController = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: .Alert)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
-        let okAction = UIAlertAction(title: "Sounds good", style: .Default) { (action) in
-        }
+        let newURLAction = UIAlertAction(
+            title: "New URL",
+            style: UIAlertActionStyle.Default)
+            { (action) in
+                self.enterNewURL()
+            }
         
-        alertController.addAction(okAction)
+        let refreshAction = UIAlertAction(
+            title: "Refresh Quizzes",
+            style: UIAlertActionStyle.Default)
+            { (action) in
+                self.startConnection()
+            }
+        
+        let closeAction = UIAlertAction(
+            title: "Close",
+            style: UIAlertActionStyle.Cancel)
+            { (action) in
+            }
+        
+        alertController.addAction(newURLAction)
+        alertController.addAction(refreshAction)
+        alertController.addAction(closeAction)
+        
+        alertController.modalPresentationStyle = .Popover
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    // Create New URL popover
+    func enterNewURL() {
+        let alertController = UIAlertController(title: "Enter new URL", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let closeAction = UIAlertAction(
+            title: "Close",
+            style: UIAlertActionStyle.Cancel)
+            { (action) in
+            }
+        
+        let OKAction = UIAlertAction(
+            title: "OK",
+            style: UIAlertActionStyle.Default)
+            { (action) in
+                let tf = alertController.textFields?.first as? UITextField
+                self.defaults.setValue(tf!.text, forKey: "url")
+                
+                self.startConnection()
+            }
+        
+        alertController.addAction(closeAction)
+        alertController.addAction(OKAction)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "New URL"
+        }
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // Start retrieving quizzes
     func startConnection() {
-        let path : String = "http://tednewardsandbox.site44.com/questions.json"
+        let path : String = quizURL
         var url : NSURL = NSURL(string: path)!
         var request: NSURLRequest = NSURLRequest(URL: url)
         var connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: false)!
@@ -79,16 +141,25 @@ class MasterViewController: UITableViewController {
     }
     
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
-        self.data.appendData(data)
+        self.data.setData(data)
         
         println("Appended to data!")
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection!) {
-        var err: NSError
+        println("Finished loading!")
         
         var jsonResult: NSMutableArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSMutableArray
         
+        objects = makeQuizzes(jsonResult)
+        defaults.setObject(jsonResult, forKey: "quizList")
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
+    }
+    
+    func makeQuizzes(jsonResult: NSMutableArray!) -> [Quiz]{
         var newQuizList : [Quiz] = []
         
         for var i : Int = 0; i < jsonResult.count as Int; i++ {
@@ -99,7 +170,7 @@ class MasterViewController: UITableViewController {
             
             for var j : Int = 0; j < count(givenQuestions); j++ {
                 var currentQuestion: AnyObject = givenQuestions[j]
-            
+                
                 var correct : Int = (currentQuestion["answer"] as! String).toInt()! - 1
                 
                 var newQuestion = Question(prompt: currentQuestion["text"] as! String, answers: currentQuestion["answers"] as! [String], correctAnswer: correct)
@@ -112,23 +183,18 @@ class MasterViewController: UITableViewController {
             newQuizList.append(newQuiz)
         }
         
-        objects = newQuizList
+        return newQuizList
     }
     
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let chosen = objects[indexPath.row]
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-                controller.chosenQuiz = chosen
-                controller.questionNumber = 0
-                
-                //controller.detailItem = chosen.title
-                //controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-            }
-        //}
+        if let indexPath = self.tableView.indexPathForSelectedRow() {
+            let chosen = objects[indexPath.row]
+            let controller = (segue.destinationViewController as! UINavigationController).topViewController as!DetailViewController
+            controller.chosenQuiz = chosen
+            controller.questionNumber = 0
+        }
     }
 
     // MARK: - Table View
@@ -210,7 +276,7 @@ class MasterViewController: UITableViewController {
         }
     }
     
-    // Represents all quizes in an array
+    // Represents all default quizes in an array
     class QuizData {
         var data : [Quiz]
         
