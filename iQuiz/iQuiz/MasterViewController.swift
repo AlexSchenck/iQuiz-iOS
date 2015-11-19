@@ -12,6 +12,7 @@ class MasterViewController: UITableViewController {
     
     var detailViewController: DetailViewController? = nil
     var objects : [Quiz] = QuizData().getQuizzes()
+    var data = NSMutableData()
 
     @IBOutlet weak var SettingsBarButton: UIBarButtonItem!
 
@@ -46,6 +47,13 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
+        
+        startConnection()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func gotoSettings(sender: AnyObject) {
@@ -59,9 +67,29 @@ class MasterViewController: UITableViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func startConnection() {
+        let path : String = "http://tednewardsandbox.site44.com/questions.json"
+        var url : NSURL = NSURL(string: path)!
+        var request: NSURLRequest = NSURLRequest(URL: url)
+        var connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: false)!
+        
+        connection.start()
+        
+        println("Connection started!")
+    }
+    
+    func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
+        self.data.appendData(data)
+        
+        println("Appended to data!")
+    }
+    
+    func connectionDidFinishLoading(connection: NSURLConnection!) -> NSMutableArray {
+        var err: NSError
+        
+        var jsonResult: NSMutableArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSMutableArray
+        
+        return jsonResult
     }
     
     // MARK: - Segues
@@ -128,6 +156,7 @@ class MasterViewController: UITableViewController {
             self.description = description
             self.imagePath = imagePath
             self.questions = questions
+            
         }
         
         func addQuestion(question : Question) {
