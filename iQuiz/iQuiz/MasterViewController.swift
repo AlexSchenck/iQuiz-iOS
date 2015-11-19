@@ -84,12 +84,35 @@ class MasterViewController: UITableViewController {
         println("Appended to data!")
     }
     
-    func connectionDidFinishLoading(connection: NSURLConnection!) -> NSMutableArray {
+    func connectionDidFinishLoading(connection: NSURLConnection!) {
         var err: NSError
         
         var jsonResult: NSMutableArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSMutableArray
         
-        return jsonResult
+        var newQuizList : [Quiz] = []
+        
+        for var i : Int = 0; i < jsonResult.count as Int; i++ {
+            var currentQuiz: AnyObject = jsonResult[i]
+            
+            var newQuestions : [Question] = []
+            var givenQuestions : [AnyObject] = currentQuiz["questions"] as! [AnyObject]
+            
+            for var j : Int = 0; j < count(givenQuestions); j++ {
+                var currentQuestion: AnyObject = givenQuestions[j]
+            
+                var correct : Int = (currentQuestion["answer"] as! String).toInt()! - 1
+                
+                var newQuestion = Question(prompt: currentQuestion["text"] as! String, answers: currentQuestion["answers"] as! [String], correctAnswer: correct)
+                
+                newQuestions.append(newQuestion)
+            }
+            
+            var newQuiz = Quiz(title: currentQuiz["title"] as! String, description: currentQuiz["desc"] as! String, imagePath: "", questions: newQuestions)
+            
+            newQuizList.append(newQuiz)
+        }
+        
+        objects = newQuizList
     }
     
     // MARK: - Segues
